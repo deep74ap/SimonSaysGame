@@ -6,6 +6,7 @@ let btns=["yellow","red","green","purple"];
 let started=false;
 let level=0;
 var h2=document.querySelector("h2");
+var  h3=document.querySelector("h3")
 document.addEventListener("keypress",function(){
     if(started==false){
         started=true;
@@ -21,14 +22,14 @@ function btnflash(btn){
     btn.classList.add("flash");
     setTimeout(function(){
         btn.classList.remove("flash");
-    },200);
+    },500);
 
 }
 function userflash(btn){
     btn.classList.add("userflash");
     setTimeout(function(){
         btn.classList.remove("userflash");
-    },200);
+    },300);
 
 }
 function levelup(){
@@ -51,12 +52,14 @@ function check(indx){
     
     if(userSeq[indx] === gameSeq[indx]){
         if(userSeq.length == gameSeq.length){
+            
             levelup();
         }
         
     }
     else{
         h2.innerText=`Game Over! Press any key to start.`;
+        display();
         reset();
     }
 
@@ -85,4 +88,8 @@ function reset(){
     userSeq=[];
     level=0;
 
+}
+function display(){
+    h3.innerText=`Your final Score is ${level}`
+    
 }
